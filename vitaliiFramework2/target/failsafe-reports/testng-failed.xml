@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" verbose="0" name="Failed suite [Suite]" parallel="methods">
+  <parameter name="userPassword" value="qwerty"/>
+  <parameter name="userEmailAddress" value="ir2.0bb16be1@mailosaur.in"/>
+  <listeners>
+    <listener class-name="com.vitalii.vitaliiFramework2.listeners.RetryListener"/>
+  </listeners>
+  <test name="Test(failed)" parallel="methods">
+    <classes>
+      <class name="com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="beforeTest"/>
+          <include name="verifyPublishedFormLabelTextIsDisplayed" invocation-numbers="0"/>
+          <include name="clearCookies"/>
+        </methods>
+      </class> <!-- com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,3 @@
+TODO list:
+tune logging (specify correct log levels, make sure its configurable in a file or code). At this point extra logs appear and pollute logs
+use listener in BaseTest class only (at this point I also specify it in testng.xml, otherwise test does not work)

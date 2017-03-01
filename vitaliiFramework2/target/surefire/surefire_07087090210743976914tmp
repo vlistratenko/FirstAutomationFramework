@@ -1,0 +1,13 @@
+#surefire_0
+#Tue Feb 28 18:20:17 EET 2017
+webdriver.chrome.driver=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2\\src\\test\\resources\\selenium_standalone_binaries\\windows\\googlechrome\\64bit\\chromedriver.exe
+environment=test
+webdriver.ie.driver=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2\\src\\test\\resources\\selenium_standalone_binaries\\windows\\internetexplorer\\64bit\\IEDriverServer.exe
+browser=firefox
+user.dir=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2
+webdriver.gecko.driver=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2\\src\\test\\resources\\selenium_standalone_binaries\\windows\\marionette\\64bit\\geckodriver.exe
+localRepository=C\:\\Users\\Listratenko\\.m2\\repository
+basedir=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2
+screenshotDirectory=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2\\target/screenshots
+phantomjs.binary.path=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2\\src\\test\\resources\\selenium_standalone_binaries\\windows\\phantomjs\\64bit\\phantomjs.exe
+webdriver.opera.driver=C\:\\Users\\Listratenko\\VitFrameworSecond\\vitaliiFramework2\\src\\test\\resources\\selenium_standalone_binaries\\windows\\operachromium\\64bit\\operadriver.exe

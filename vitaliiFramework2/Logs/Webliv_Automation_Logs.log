@@ -1,0 +1,21 @@
+28-02-2017 18:20:18 INFO [TestResultListener]: - - - - - Test verifyPublishedFormLabelTextIsDisplayed in com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD class has STARTED - - - - -
+28-02-2017 18:20:18 INFO [WebDriverThread]: ! ========== New Driver instance is created ============= !
+28-02-2017 18:20:24 INFO [Browser]: Opening https://hq.test.igniteaction.net
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //*[@id='password']
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //*[@id='password']
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //*[@id='email']
+28-02-2017 18:20:40 INFO [Browser]: Typing ir2.0bb16be1@mailosaur.in into field
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //*[@id='email']
+28-02-2017 18:20:40 INFO [Browser]: Button with locator //*[@id='email'] on page https://hq.test.igniteaction.net/#/login is clicked
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //*[@id='password']
+28-02-2017 18:20:40 INFO [Browser]: Typing qwerty into field
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //*[@id='password']
+28-02-2017 18:20:40 INFO [Browser]: Button with locator //*[@id='password'] on page https://hq.test.igniteaction.net/#/login is clicked
+28-02-2017 18:20:40 INFO [Browser]: Locating element with the following locator: //button
+28-02-2017 18:20:41 INFO [Browser]: Button with locator //button on page https://hq.test.igniteaction.net/#/login is clicked
+28-02-2017 18:20:44 ERROR[TestResultListener]: - - - - - Test verifyPublishedFormLabelTextIsDisplayed in com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD class has FAILED and will be restarted
+28-02-2017 18:20:44 WARN [ScreenshotListener]: Written screenshot to C:\Users\Listratenko\VitFrameworSecond\vitaliiFramework2\target\screenshots\1488298844010_verifyPublishedFormLabelTextIsDisplayed.png
+28-02-2017 18:20:44 INFO [TestResultListener]: - - - - - Test verifyPublishedFormLabelTextIsDisplayed in com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD class has STARTED - - - - -
+28-02-2017 18:20:44 WARN [TestResultListener]: - - - - - Test verifyPublishedFormLabelTextIsDisplayed in com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD class was SKIPPED - - - - -
+28-02-2017 18:20:44 ERROR[TestResultListener]: - - - - - Test verifyPublishedFormLabelTextIsDisplayed in com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD class has FAILED and will be restarted
+28-02-2017 18:20:44 WARN [ScreenshotListener]: Written screenshot to C:\Users\Listratenko\VitFrameworSecond\vitaliiFramework2\target\screenshots\1488298844034_verifyPublishedFormLabelTextIsDisplayed.png

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>vital.com</groupId>
+	<artifactId>vital_framework</artifactId>
+	<version>0.0.1</version>
+	<name>Vital framework</name>
+	<description>This is gonna be my first framework</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<!-- <dependency> <groupId>com.codeborne</groupId> <artifactId>phantomjsdriver</artifactId> 
+			<version>1.2.1</version> </dependency> -->
+	</dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Dependency versions -->
+		<selenium.version>LATEST</selenium.version>
+		<!-- Configurable variables -->
+		<threads>1</threads>
+		<browser>firefox</browser>
+		<overwrite.binaries>false</overwrite.binaries>
+		<environment>de4v</environment>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<parallel>false</parallel>
+					<threadCount>${threads}</threadCount>
+					<systemPropertyVariables>
+						<browser>${browser}</browser>
+						<environment>${environment}</environment>
+						<screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
+						<!--Set properties passed in by the driver binary downloader -->
+						<phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>
+						<webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+						<webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
+						<webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
+						<webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
+					</systemPropertyVariables>
+					<includes>
+						<!-- <include>**/*WD.java</include> -->
+						<include>**/*WD.java</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.lazerycode.selenium</groupId>
+				<artifactId>driver-binary-downloader-maven-plugin</artifactId>
+				<version>1.0.11</version>
+				<configuration>
+					<rootStandaloneServerDirectory>${project.basedir}/src/test/resources/selenium_standalone_binaries</rootStandaloneServerDirectory>
+					<downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
+					<customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
+					<overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>selenium</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

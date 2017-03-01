@@ -1,0 +1,5 @@
+package com.vitalii.vitaliiFramework2.listeners;
+
+public class TestResultListener {
+
+}

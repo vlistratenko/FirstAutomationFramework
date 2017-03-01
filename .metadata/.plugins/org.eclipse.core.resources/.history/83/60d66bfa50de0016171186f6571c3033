@@ -1,0 +1,92 @@
+package com.vitalii.vitaliiFramework2.tests;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.vitalii.vitaliiFramework2.helpers.Helper;
+import com.vitalii.vitaliiFramework2.pages.ActivitiesPage;
+import com.vitalii.vitaliiFramework2.pages.DashboardPage;
+import com.vitalii.vitaliiFramework2.pages.LoginPage;
+
+public class LoginPageTestsWD extends Base {
+	
+/*	@Test
+	public void FailedLoginTest(){
+		
+		//getLoginPage().doFailedLogin("test1", "test1");
+		
+		LoginPage page = new LoginPage();
+		page.doFailedLogin("test1", "test1");
+	}*/
+	
+/*	@Test
+	public void FailedLoginTest(){
+		LoginPage page = new LoginPage();
+		page.doFailedLogin("failed", "failed");
+	}*/
+	
+	@Test
+	public void doSuccessfulLoginTest(){
+		LoginPage page = new LoginPage();
+		page.doSuccessfulLogin("ir2.0bb16be1@mailosaur.in", "qwerty").
+		goToActivitiesPage().
+		goToSignUpFormsPage().
+		clickCreateSignupFormButton().
+		specifySignUpFormName(Helper.getCurrentDateAndTime()).
+		clickNextButtonToSelectLayoutTab().
+		selectLayout().
+		clickNextButtonToComposeTab().
+		clickNextButtonToAutorespondersTab().
+		clickPulblishButton(); 
+		
+	/*	try {
+			System.out.println("assertions");
+			Assert.assertEquals(getDriver().getCurrentUrl().contains("dashboard"), true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+	}
+	
+	@Test 
+	public void doSuccessfulLoginTestAndPublishSignupForm(){
+		DashboardPage dp = new DashboardPage();
+		dp.goToActivitiesPage().
+		goToSignUpFormsPage().
+		clickCreateSignupFormButton().
+		specifySignUpFormName(Helper.getCurrentDateAndTime()).
+		clickNextButton().
+		selectLayout().
+		clickNextButton().
+		clickNextButton().
+		clickPulblishButton(); 
+		
+/*		try {
+			System.out.println("assertions");
+			Assert.assertEquals(getDriver().getCurrentUrl().contains("subscribe"), true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+	}
+	
+/*	@Test
+	public void parallelTest1(){
+		LoginPage page = new LoginPage();
+		page.doSuccessfulLogin("ir2.0bb16be1@mailosaur.in", "qwerty");
+	}
+	
+	@Test
+	public void parallelTest2(){
+		LoginPage page = new LoginPage();
+		page.doSuccessfulLogin("ir2.druzey1a@mailosaur.in", "qwerty");
+	}
+	
+	@Test
+	public void parallelTest3(){
+		LoginPage page = new LoginPage();
+		page.doSuccessfulLogin("vitalii.03eed056@mailosaur.in", "qwerty");
+	}*/
+	
+}

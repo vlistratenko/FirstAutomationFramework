@@ -1,0 +1,9 @@
+TODO list:
+tune logging (specify correct log levels, make sure its configurable in a file or code). At this point extra logs appear and pollute logs
+use listener in BaseTest class only (at this point I also specify it in testng.xml, otherwise test does not work)
+store locators in txt file and parse it
+sync with JDBC
+connect to git
+Allure test report
+think about implementation of WebDriverEventListener >> implement loggin on some actions at listener level
+integration with SoapUI & JMeter

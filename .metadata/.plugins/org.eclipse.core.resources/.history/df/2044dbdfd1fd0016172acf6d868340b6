@@ -1,0 +1,3 @@
+DevEnvironmentUrl=hq.dev.igniteaction.net
+TestEnvironmentUrl=https://hq.test.igniteaction.net
+UatEnvironmentUrl=hq.uat.igniteaction.net

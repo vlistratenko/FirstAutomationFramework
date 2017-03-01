@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" verbose="0" name="Failed suite [Surefire suite]" parallel="true">
+  <test name="Surefire test(failed)" parallel="true">
+    <classes>
+      <class name="com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="doSuccessfulLoginTest"/>
+          <include name="beforeTest"/>
+          <include name="clearCookies"/>
+        </methods>
+      </class> <!-- com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->

@@ -1,0 +1,133 @@
+package com.vitalii.vitaliiFramework2.pages;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import com.vitalii.vitaliiFramework2.driver.DriverFactory;
+import com.vitalii.vitaliiFramework2.helpers.Waiters;
+
+public class Browser {
+	
+	private WebDriver driver;
+	protected Logger logger;
+	protected Waiters waiters;
+	
+	public Browser (){
+		try {
+			this.driver = DriverFactory.getDriver();
+			//driver = WebDriverWrapper.getWebDriverTest();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.logger = Logger.getLogger(Browser.class);
+		this.waiters = new Waiters();
+	}
+	
+	public WebDriver getDriver(){
+		return this.driver;
+	}
+		
+	protected void open(String url){
+		logger.info("Opening " + url);
+		this.driver.navigate().to(url);
+	}
+	
+	protected void type(String locator, String text){
+
+		WebElement el = findPageElementByXpath(locator);
+			logger.info("Typing " + text + " into field");
+			click(locator);
+			el.clear();
+			el.sendKeys(text);
+	}
+	
+	protected void click(String locator){
+		waiters.waitElementIsVisible(locator);
+		WebElement element = findPageElementByXpath(locator);
+		element.click();
+		logger.info("Button with locator " + locator + " on page " + driver.getCurrentUrl() + " is clicked");
+	}
+	
+	protected void clickWithFluentWait(String locator){
+		logger.info("Clicking button");
+		//TODO: make timeOutInSeconds variable (i.e set in config file, class field, etc.)
+		WebElement element = waiters.fluentWaitIgnoringNoSuchElementExceptionAndElementNotVisibleException(locator, 30, 500);
+		element.click();
+	}
+	
+	protected void clickJs(String locator){
+		//waiters.waitElementIsVisible(locator);
+		WebElement el = findPageElementByXpath(locator);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", el);
+	}
+	
+	protected void removeAtributeWithJs(String locator, String attribute) {
+		logger.debug("Removing attribute " + findPageElementByXpath(locator).getAttribute(attribute));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(("arguments[0].removeAttribute('" + attribute + "')"), findPageElementByXpath(locator));
+	}
+	
+	protected void clickJs(WebElement el){
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", el);
+	}
+	
+	protected void doubleClick(String locator){
+		waiters.waitElementIsVisible(locator);
+		Actions action = new Actions(driver);
+		action.doubleClick(findPageElementByXpath(locator)).perform();
+	}
+		
+	protected WebElement findPageElementByXpath (String locator){
+		logger.info("Locating element with the following locator: " + locator);
+		WebElement el = null;
+		try {
+			el = this.driver.findElement(By.xpath(locator));
+		} catch (NoSuchElementException e) {
+			logger.error("Element with locator " + locator + " was not found at " + driver.getCurrentUrl() + " page", e);
+		}
+		
+		return el;
+	}
+	
+	//Waiters
+	
+/*	public void waitElementToLoad(String locator) {
+		logger.info("Waiting for element with locator " + locator + " to load");
+		WebDriverWait wait = new WebDriverWait(driver, 15, 100);
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+	}
+	
+	public WebElement explicitWaitUntilElementIsClickable(String locator, long timeOutInSeconds){
+		//TODO: make timeOutInSeconds variable (i.e set in config file, class field, etc.)
+		timeOutInSeconds = 10;
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+		return element;
+	}
+	
+	public WebElement fluentWaitIgnoringNoSuchElementExceptionAndElementNotVisibleException(final String locator, long waitingTime, long pollingInterval){
+		waitingTime = 30; 
+		pollingInterval = 500;
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(waitingTime, TimeUnit.SECONDS)
+				.pollingEvery(pollingInterval, TimeUnit.MILLISECONDS)
+				.ignoring(NoSuchElementException.class)
+				.ignoring(ElementNotVisibleException.class)
+				.withMessage("Fluent wait of " + waitingTime + " seconds with " + pollingInterval + " milliseconds polling interval was unable to locate element with locator " + locator);
+		
+		WebElement el = wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				return findPageElementByXpath(locator);
+				
+			}
+		});
+		return el;
+	}*/
+}

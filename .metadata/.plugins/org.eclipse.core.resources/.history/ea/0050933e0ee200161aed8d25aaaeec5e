@@ -1,0 +1,15 @@
+package com.vitalii.vitaliiFramework2.pages;
+
+public class CreateSignupFormAutorespondersTab extends BasePage {
+	
+/*	public CreateSignupFormAutorespondersTab() {
+		super("compose");
+	}*/
+
+	public String publisButton = "//*[@id='btnGo-autoresponders-publish']";
+	
+	public CreateSignupFormPublishedDetailsTab clickPulblishButton(){
+		click(publisButton);
+		return new CreateSignupFormPublishedDetailsTab();
+	}
+}

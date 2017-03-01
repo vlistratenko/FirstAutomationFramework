@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 44.808 sec <<< FAILURE! - in com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD
+doSuccessfulLoginTest(com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD)  Time elapsed: 44.162 sec  <<< FAILURE!
+java.lang.AssertionError: Expected label Your form is publshed is not found at https://hq.test.igniteaction.net/#/activities/widgets/subscribe/b87b808a-527e-4fe0-b05d-5a693c79be6b?tab=publish page expected [true] but found [false]
+	at com.vitalii.vitaliiFramework2.tests.LoginPageTestsWD.doSuccessfulLoginTest(LoginPageTestsWD.java:35)
+

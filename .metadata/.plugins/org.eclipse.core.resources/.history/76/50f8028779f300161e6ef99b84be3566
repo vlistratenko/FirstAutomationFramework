@@ -1,0 +1,56 @@
+package com.vitalii.vitaliiFramework2.listeners;
+
+import org.apache.log4j.Logger;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+public class TestResultListener implements ITestListener {
+	
+	Logger logger = Logger.getLogger(TestResultListener.class);
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		logger.info("- - - - - - - - - - - Test " + result.getTestName() + " is started - - - - - - - - - - - - <---getTestName");
+		logger.info("- - - - - - - - - - - Test " + result.getInstanceName() + " is started - - - - - - - - - - - -  <----getInstanceName");
+		logger.info("- - - - - - - - - - - Test " + result.getName() + " is started - - - - - - - - - - - - <----geteName");
+		
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		logger.info("Test " +  result.getName() + " has been successfully completed");
+		
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		logger.info("Test " +  result.getName() + " has been FAILED");
+		
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

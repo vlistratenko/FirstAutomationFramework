@@ -1,0 +1,10 @@
+TODO list:
+1 - tune logging (specify correct log levels, make sure its configurable in a file or code). At this point extra logs appear and pollute logs
+2 - use listener in BaseTest class only (at this point I also specify it in testng.xml, otherwise test does not work)
+3 - store locators in txt file and parse it
+4 - sync with JDBC
+5 - connect to git
+6 - Allure test report
+7 - think about implementation of WebDriverEventListener >> implement logging on some actions at listener level
+8 - integration with SoapUI & JMeter
+10 - реализовать Case/switch с помощью Lambda

@@ -1,0 +1,104 @@
+package com.vitalii.vitaliiFramework2.pages;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import com.vitalii.vitaliiFramework2.driver.DriverFactory;
+import com.vitalii.vitaliiFramework2.helpers.Waiters;
+
+public class Browser {
+	
+	private WebDriver driver;
+	private Logger logger;
+	protected Waiters waiters;
+	
+	public Browser (){
+		try {
+			this.driver = DriverFactory.getDriver();
+			//driver = WebDriverWrapper.getWebDriverTest();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.logger = Logger.getLogger(Browser.class);
+		this.waiters = new Waiters();
+	}
+	
+	public WebDriver getDriver(){
+		return this.driver;
+	}
+	
+	public boolean isLoggedIn(){
+		boolean a;
+		String url = driver.getCurrentUrl();
+		url.contains("login") ? a = true : a = false;
+		return a;
+	}
+		
+	protected void open(String url){
+		logger.info("Opening " + url);
+		this.driver.navigate().to(url);
+	}
+	
+	protected void type(String locator, String text){
+		WebElement el = findPageElementByXpath(locator);
+			logger.info("Typing " + text + " into field");
+			click(locator);
+			el.clear();
+			el.sendKeys(text);
+	}
+	
+	protected void click(String locator){
+		//waiters.waitElementIsVisible(locator);
+		WebElement element = findPageElementByXpath(locator);
+		element.click();
+		logger.info("Button with locator " + locator + " on page " + driver.getCurrentUrl() + " is clicked");
+	}
+	
+/*	protected void clickWithFluentWait(String locator){
+		logger.info("Clicking button");
+		//TODO: make timeOutInSeconds variable (i.e set in config file, class field, etc.)
+		WebElement element = waiters.fluentWaitIgnoringNoSuchElementExceptionAndElementNotVisibleException(locator, 30, 500);
+		element.click();
+	}*/
+	
+	protected void clickJs(String locator){
+		//waiters.fluentWaitIgnoringNoSuchElementExceptionAndElementNotVisibleException(locator, 15, 500);
+		WebElement el = findPageElementByXpath(locator);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", el);
+		logger.info("Button with locator " + locator + " on page " + driver.getCurrentUrl() + " is clicked");
+	}
+	
+	protected void removeAtributeWithJs(String locator, String attribute) {
+		logger.debug("Removing attribute " + findPageElementByXpath(locator).getAttribute(attribute));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(("arguments[0].removeAttribute('" + attribute + "')"), findPageElementByXpath(locator));
+	}
+	
+	protected void clickJs(WebElement el){
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", el);
+	}
+	
+	protected void doubleClick(String locator){
+		//waiters.waitElementIsVisible(locator);
+		Actions action = new Actions(driver);
+		action.doubleClick(findPageElementByXpath(locator)).perform();
+	}
+		
+	protected WebElement findPageElementByXpath (String locator){
+		logger.info("Locating element with the following locator: " + locator);
+		WebElement el = null;
+		try {
+			el = this.driver.findElement(By.xpath(locator));
+		} catch (NoSuchElementException e) {
+			logger.error("Element with locator " + locator + " was not found at " + driver.getCurrentUrl() + " page", e);
+		}
+		return el;
+	}
+}
