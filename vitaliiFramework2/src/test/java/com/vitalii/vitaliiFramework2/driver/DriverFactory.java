@@ -15,7 +15,7 @@ import com.vitalii.vitaliiFramework2.pages.LoginPage;
 public class DriverFactory {
 	private static List<WebDriverThread> webDriverThreadPool = Collections.synchronizedList(new ArrayList<WebDriverThread>());
 	private static ThreadLocal<WebDriverThread> driverThread;
-
+//test
 	@BeforeSuite
 	public void beforeSuite(){
 		instantiateDriverObject();
