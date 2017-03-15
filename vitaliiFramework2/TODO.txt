@@ -8,3 +8,4 @@ TODO list:
 7 - think about implementation of WebDriverEventListener >> implement logging on some actions at listener level
 8 - integration with SoapUI & JMeter
 10 - реализовать Case/switch с помощью Lambda
+test from home
